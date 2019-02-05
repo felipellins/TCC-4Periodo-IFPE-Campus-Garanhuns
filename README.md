@@ -1,6 +1,6 @@
 # TCC- 4 - Período - IFPE Campus Garanhuns
 
-Language Programing - Lua (PUC-Rio)
+Language Programing - Lua (PUC-Rio) - 
 Framework - Corona Labs
 
 1 - Aplicativo Mobile para realização de serviços de delivery
