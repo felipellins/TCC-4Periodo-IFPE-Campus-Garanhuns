@@ -1,5 +1,5 @@
 package fast_delivery.web.model;
 
-public interface ContaCorrenteDAO {
+public interface ContaCorrenteDAO extends DAO<ContaCorrente> {
 
 }
