@@ -2,11 +2,22 @@ package fast_delivery.web.model;
 
 import java.util.List;
 
+import org.hibernate.Session;
+
+import fast_delivery.web.conexaobanco.HibernateUtil;
+
 public class JDBCProdutoDAO implements ProdutoDAO {
 
 	public void inserir(Produto d) {
-		// TODO Auto-generated method stub
-		
+		Session session = HibernateUtil.getSession();
+		try{
+			session.getTransaction().begin();
+			session.save(d);
+			session.getTransaction().commit();
+			session.close();
+		}catch (Exception e) {
+			System.out.println("Erro");
+		}
 	}
 
 	public void alterar(Produto d) {
