@@ -1,27 +1,37 @@
 package fast_delivery.web.model;
 
-import java.util.ArrayList;
-import java.util.List;
+//import java.util.ArrayList;
+//import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="produto")
 public class Produto {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private int id;
 	
+	@Column(length = 30)
 	private String nomeProduto;
+	
+	@Column(length = 5)
 	private double valorProduto;
+	
+	@Column(length = 5)
 	private double quantProduto;
-	private Fornecedor fornProduto;
 	
-	List<Produto> listaDeProdutos = new ArrayList<Produto>();
 	
+	//private Fornecedor fornProduto;
+	
+	
+	//List<Produto> listaDeProdutos = new ArrayList<Produto>();
 	
 	
 	public String getNomeProduto() {
@@ -48,29 +58,34 @@ public class Produto {
 		this.quantProduto = quantProduto;
 	}
 
-	public Fornecedor getFornProduto() {
-		return fornProduto;
-	}
+	//public Fornecedor getFornProduto() {
+		//return fornProduto;
+	//}
 
-	public void setFornProduto(Fornecedor fornProduto) {
-		this.fornProduto = fornProduto;
-	}
+	//public void setFornProduto(Fornecedor fornProduto) {
+		//this.fornProduto = fornProduto;
+	//}
 
-	public List<Produto> getListaDeProdutos() {
-		return listaDeProdutos;
-	}
+	//public List<Produto> getListaDeProdutos() {
+		//return listaDeProdutos;
+	//}
 
-	public void setListaDeProdutos(List<Produto> listaDeProdutos) {
-		this.listaDeProdutos = listaDeProdutos;
-	}
+	//public void setListaDeProdutos(List<Produto> listaDeProdutos) {
+		//this.listaDeProdutos = listaDeProdutos;
+	//}
 	
 	
 
-	public Produto(String nomeProduto, double valorProduto, double quantProduto, Fornecedor fornProduto) {
+	public Produto(int id, String nomeProduto, double valorProduto, double quantProduto) {
+		this.id = id;
 		this.nomeProduto = nomeProduto;
 		this.valorProduto = valorProduto;
 		this.quantProduto = quantProduto;
-		this.fornProduto = fornProduto;
+		//this.fornProduto = fornProduto;
+	}
+	
+	public Produto() {
+		
 	}
 
 	public void cadastrarProduto() {
@@ -81,8 +96,8 @@ public class Produto {
 		
 	}
 	
-	public List listarProduto() {
-		return listaDeProdutos;
-	}
+	//public List listarProduto() {
+		//return listaDeProdutos;
+	//}
 
 }

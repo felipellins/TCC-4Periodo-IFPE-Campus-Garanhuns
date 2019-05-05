@@ -8,31 +8,32 @@ import fast_delivery.web.conexaobanco.HibernateUtil;
 
 public class JDBCProdutoDAO implements ProdutoDAO {
 
-	public void inserir(Produto d) {
+	public void inserir(Produto p) {
+		
 		Session session = HibernateUtil.getSession();
-		try{
+		try {
 			session.getTransaction().begin();
-			session.save(d);
+			session.save(p);
 			session.getTransaction().commit();
 			session.close();
-		}catch (Exception e) {
+		} catch (Exception e) {
 			System.out.println("Erro");
 		}
 	}
 
-	public void alterar(Produto d) {
+	public void alterar(Produto p) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
-	public Produto recuperar(Produto d) {
+	public Produto recuperar(Produto p) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public void deletar(Produto d) {
+	public void deletar(Produto p) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public List<Produto> listarTodos() {
