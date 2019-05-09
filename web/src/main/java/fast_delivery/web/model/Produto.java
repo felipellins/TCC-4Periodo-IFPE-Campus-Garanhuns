@@ -1,5 +1,7 @@
 package fast_delivery.web.model;
 
+import java.io.Serializable;
+
 //import java.util.ArrayList;
 //import java.util.List;
 
@@ -8,15 +10,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 @Entity
-@Table(name="produto")
-public class Produto {
+public class Produto implements Serializable {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	@GeneratedValue
+	private long id;
 	
 	@Column(length = 30)
 	private String nomeProduto;
@@ -76,8 +76,7 @@ public class Produto {
 	
 	
 
-	public Produto(int id, String nomeProduto, double valorProduto, double quantProduto) {
-		this.id = id;
+	public Produto(String nomeProduto, double valorProduto, double quantProduto) {
 		this.nomeProduto = nomeProduto;
 		this.valorProduto = valorProduto;
 		this.quantProduto = quantProduto;

@@ -11,11 +11,11 @@ public class Teste {
 		
 		//Fornecedor forn = new Fornecedor();
 		
-		Produto pr = new Produto();
+		Produto pr = new Produto("Arroz", 1.0, 1.0);
 		
-		pr.setNomeProduto("Arroz");
-		pr.setQuantProduto(1);
-		pr.setValorProduto(3);
+		//pr.setNomeProduto("Arroz");
+		//pr.setQuantProduto(1);
+		//pr.setValorProduto(3);
 		
 		
 		//Produto pr2 = new Produto();
