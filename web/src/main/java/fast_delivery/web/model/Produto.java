@@ -15,7 +15,7 @@ import javax.persistence.Id;
 public class Produto implements Serializable {
 	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
 	@Column(length = 30)
