@@ -35,7 +35,7 @@ public class JDBCProdutoDAO implements ProdutoDAO {
 
 	}
 
-	public Produto recuperar(Produto p) {
+	public Produto recuperar(Integer p) {
 		Produto produto = null;
 
 		Session session = HibernateUtil.getSession();

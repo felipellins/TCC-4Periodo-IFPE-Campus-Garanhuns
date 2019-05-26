@@ -19,7 +19,7 @@ public class ProdutoModel {
 
 	}
 
-	public Produto recuperar(Produto p) {
+	public Produto recuperar(Integer p) {
 
 		return prod.recuperar(p);
 	}

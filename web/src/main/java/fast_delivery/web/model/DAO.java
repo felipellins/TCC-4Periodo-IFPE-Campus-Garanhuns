@@ -8,7 +8,7 @@ public interface DAO<T> {
 
     public void alterar(T d);
 
-    public T recuperar(T d);
+    public T recuperar(Integer d);
 
     public void deletar(T d);
 

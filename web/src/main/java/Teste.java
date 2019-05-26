@@ -11,22 +11,15 @@ public class Teste {
 
 	public static void main(String[] args) {
 
-		Produto p = new Produto("Arroz", 0, 0);
+		ProdutoController pc = new ProdutoController();
 		
-		//System.out.println(p.toString());
 		
-		List<Produto> t = new ArrayList<>();
-		for (int i = 0; i < 3; i++) {
-			
-			
-			t.add(p);
-			p.setQuantProduto(i);
-			System.out.println(p.toString());
+		
+		Produto p = new Produto("Outra Carroça", 1, 1);
+//		pc.inserirProdutoAction(p);
+		Produto temp = pc.recuperarProdutoAction(2);
+		if(temp != null) {
+			System.out.println(temp.toString());
 		}
-		
-//		for(Produto produtoTeste : t) {
-//			System.out.println(produtoTeste.toString() + "\n");
-//		}
-
 	}
 }

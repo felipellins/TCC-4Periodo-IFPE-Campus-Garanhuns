@@ -14,7 +14,7 @@ public class JDBCContaCorrenteDAO implements ContaCorrenteDAO{
 		
 	}
 
-	public ContaCorrente recuperar(ContaCorrente d) {
+	public ContaCorrente recuperar(Integer d) {
 		// TODO Auto-generated method stub
 		return null;
 	}

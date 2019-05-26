@@ -17,7 +17,7 @@ public class ProdutoController {
 		pm.alterar(p);
 	}
 
-	public Produto recuperarProdutoAction(Produto p) {
+	public Produto recuperarProdutoAction(Integer p) {
 
 		return pm.recuperar(p);
 	}
