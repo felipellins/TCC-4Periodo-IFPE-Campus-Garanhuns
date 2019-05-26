@@ -1,29 +1,32 @@
+
 //import fast.delivery.web.model.Fornecedor;
+import java.util.ArrayList;
+import java.util.List;
+
 import fast_delivery.web.controller.ProdutoController;
 import fast_delivery.web.model.Produto;
+
 
 public class Teste {
 
 	public static void main(String[] args) {
 
+		Produto p = new Produto("Arroz", 0, 0);
 		
-		ProdutoController pc = new ProdutoController();
+		//System.out.println(p.toString());
 		
-		//Fornecedor forn = new Fornecedor();
+		List<Produto> t = new ArrayList<>();
+		for (int i = 0; i < 3; i++) {
+			
+			
+			t.add(p);
+			p.setQuantProduto(i);
+			System.out.println(p.toString());
+		}
 		
-		Produto pr = new Produto("ArrozBranco", 1.0, 1.0);
-		
-		//pr.setNomeProduto("Arroz");
-		//pr.setQuantProduto(1);
-		//pr.setValorProduto(3);
-		
-		
-		//Produto pr2 = new Produto();
-		
-		pc.inserirProdutoAction(pr);
-		
-		
-		//System.out.println("teste " + pr.getNomeProduto());
-	}
+//		for(Produto produtoTeste : t) {
+//			System.out.println(produtoTeste.toString() + "\n");
+//		}
 
+	}
 }

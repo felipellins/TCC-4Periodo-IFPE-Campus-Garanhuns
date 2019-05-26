@@ -95,6 +95,10 @@ public class Produto implements Serializable {
 		
 	}
 	
+	public String toString() {
+		return "Nome do Produto: " + this.nomeProduto + "\n Quantidade do produto: " + this.quantProduto + "\n Valor do produto: " + this.valorProduto;
+	}
+	
 	//public List listarProduto() {
 		//return listaDeProdutos;
 	//}
