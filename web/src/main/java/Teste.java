@@ -1,7 +1,5 @@
 
 //import fast.delivery.web.model.Fornecedor;
-import java.util.ArrayList;
-import java.util.List;
 
 import fast_delivery.web.controller.ProdutoController;
 import fast_delivery.web.model.Produto;
@@ -15,11 +13,17 @@ public class Teste {
 		
 		
 		
-		Produto p = new Produto("Outra Carroça", 1, 1);
+//		Produto p = new Produto();
+//		p.setNomeProduto("Carroça");
+//		p.setQuantProduto(1);
+//		p.setValorProduto(1);
 //		pc.inserirProdutoAction(p);
-		Produto temp = pc.recuperarProdutoAction(2);
-		if(temp != null) {
-			System.out.println(temp.toString());
-		}
+
+		Produto t = pc.recuperarProdutoAction(2);
+		t.setValorProduto(5);
+		System.out.println(t.toString());
+		pc.alterarProdutoAction(t);
+		//pc.deletarProdutoAction(t);
+		
 	}
 }

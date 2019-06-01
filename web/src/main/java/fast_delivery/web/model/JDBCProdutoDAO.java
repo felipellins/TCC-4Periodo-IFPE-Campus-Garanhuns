@@ -50,16 +50,17 @@ public class JDBCProdutoDAO implements ProdutoDAO {
 
 	public void deletar(Produto p) {
 		Session session = HibernateUtil.getSession();
-		try {
-			session.getTransaction().begin();
-			session.delete(p);
-			session.getTransaction().commit();
-		} catch (Exception e) {
-			session.getTransaction().rollback();
-			System.out.println("Erro ao deletar " + e.toString());
-		} finally {
-			session.close();
-		}
+		System.out.println(p.toString());
+        try {
+            session.getTransaction().begin();
+            session.delete(p);
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            session.getTransaction().rollback();
+            System.err.println("Falha ao remover Produto. Erro: " + e.toString());
+        } finally {
+            session.close();
+        }
 	}
 
 	public List<Produto> listarTodos() {
