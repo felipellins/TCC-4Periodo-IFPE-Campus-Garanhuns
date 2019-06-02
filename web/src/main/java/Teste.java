@@ -1,29 +1,32 @@
+import java.time.LocalDate;
 
-//import fast.delivery.web.model.Fornecedor;
-
-import fast_delivery.web.controller.ProdutoController;
-import fast_delivery.web.model.Produto;
-
+import fast_delivery.web.model.ContaCorrente;
+import fast_delivery.web.model.LancamentoFinanceiro;
+import fast_delivery.web.model.TipoLancamento;
 
 public class Teste {
 
 	public static void main(String[] args) {
 
-		ProdutoController pc = new ProdutoController();
+		ContaCorrente cc = new ContaCorrente("00", "00");
 		
+		LancamentoFinanceiro lf = new LancamentoFinanceiro();
+		lf.setDataLanc(LocalDate.now());
+		lf.setTipoLanc(TipoLancamento.CREDITO);
+		lf.setValorLanc(100.0);
+		lf.setHistLanc("Lancamento inicial para teste");
 		
+		cc.registrarLancamento(lf);
 		
-//		Produto p = new Produto();
-//		p.setNomeProduto("Carroça");
-//		p.setQuantProduto(1);
-//		p.setValorProduto(1);
-//		pc.inserirProdutoAction(p);
-
-		Produto t = pc.recuperarProdutoAction(2);
-		t.setValorProduto(5);
-		System.out.println(t.toString());
-		pc.alterarProdutoAction(t);
-		//pc.deletarProdutoAction(t);
+		LancamentoFinanceiro lf2 = new LancamentoFinanceiro();
+		lf2.setDataLanc(LocalDate.now());
+		lf2.setTipoLanc(TipoLancamento.DEBITO);
+		lf2.setValorLanc(40.0);
+		lf2.setHistLanc("Lancamento inicial para teste");
+		
+		cc.registrarLancamento(lf2);
+		
+		System.out.println(cc.getSaldoConta());
 		
 	}
 }
