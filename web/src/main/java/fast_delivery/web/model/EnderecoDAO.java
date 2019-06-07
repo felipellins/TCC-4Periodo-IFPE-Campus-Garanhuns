@@ -1,5 +1,5 @@
 package fast_delivery.web.model;
 
-public interface EnderecoDAO {
+public interface EnderecoDAO extends DAO<Endereco> {
 
 }

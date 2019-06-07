@@ -1,5 +1,5 @@
 package fast_delivery.web.model;
 
-public interface ClienteDAO {
+public interface ClienteDAO extends DAO<Cliente> {
 
 }
