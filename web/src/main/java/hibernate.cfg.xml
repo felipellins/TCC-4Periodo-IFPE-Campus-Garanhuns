@@ -18,6 +18,8 @@
 		<mapping class="fast_delivery.web.model.Endereco"></mapping>
 		<mapping class="fast_delivery.web.model.Fornecedor"></mapping>
 		<mapping class="fast_delivery.web.model.Produto"></mapping>
+		<mapping class="fast_delivery.web.model.LancamentoFinanceiro"></mapping>
+		<mapping class="fast_delivery.web.model.PedidoVenda"></mapping>
 
 	</session-factory>
 </hibernate-configuration>

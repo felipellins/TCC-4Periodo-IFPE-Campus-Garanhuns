@@ -13,11 +13,7 @@ public class ContaCorrente {
 	
 	public List<LancamentoFinanceiro> getLancFinanceiro() {
 		return lancFinanceiro;
-	}
-
-	public void setLancFinanceiro(List<LancamentoFinanceiro> lancFinanceiro) {
-		this.lancFinanceiro = lancFinanceiro;
-	}
+	}	
 
 	public String getNumAgencia() {
 		return numAgencia;
@@ -36,37 +32,27 @@ public class ContaCorrente {
 	}
 
 	public double getSaldoConta() {
+		this.atualizarSaldo();
 		return saldoConta;
-	}
-
-	public void setSaldoConta(double saldoConta) {
-		this.saldoConta = saldoConta;
 	}
 
 	public ContaCorrente(String numAgencia, String numConta) {
 		this.numAgencia = numAgencia;
 		this.numConta = numConta;
-		//this.saldoConta = saldoConta;
-	}
-
-//	private void gerarRelatorio() {
-//
-//	}
-	
-	public void registrarLancamento(LancamentoFinanceiro lancFinanceiro) {
-		this.lancFinanceiro.add(lancFinanceiro);	
-		atualizarSaldo();
 	}
 	
-	private void atualizarSaldo() {
-		for (LancamentoFinanceiro lancamentoFinanceiro : lancFinanceiro) {
-			if(lancamentoFinanceiro.tipoLanc.DEBITO.equals(TipoLancamento.DEBITO)) {
-				this.saldoConta = this.saldoConta - lancamentoFinanceiro.valorLanc;
-			}else if(lancamentoFinanceiro.tipoLanc.CREDITO.equals(TipoLancamento.CREDITO)){
-				this.saldoConta = this.saldoConta + lancamentoFinanceiro.valorLanc;
+	public void registrarLancamento(LancamentoFinanceiro lancFinanceiro) {		
+		this.lancFinanceiro.add(lancFinanceiro);
+	}
+	
+	public void atualizarSaldo() {
+		for(LancamentoFinanceiro l : this.lancFinanceiro){
+			if(l.getTipoLanc() == TipoLancamento.CREDITO) {
+				this.saldoConta += l.getValorLanc();
 			}else {
-				System.out.println("LANCAMENTO INVALIDO");
+				this.saldoConta -= l.getValorLanc();
 			}
+			
 		}
 	}
 

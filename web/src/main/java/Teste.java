@@ -13,7 +13,7 @@ public class Teste {
 		LancamentoFinanceiro lf = new LancamentoFinanceiro();
 		lf.setDataLanc(LocalDate.now());
 		lf.setTipoLanc(TipoLancamento.CREDITO);
-		lf.setValorLanc(100.0);
+		lf.setValorLanc(100.25);
 		lf.setHistLanc("Lancamento inicial para teste");
 		
 		cc.registrarLancamento(lf);
@@ -21,7 +21,7 @@ public class Teste {
 		LancamentoFinanceiro lf2 = new LancamentoFinanceiro();
 		lf2.setDataLanc(LocalDate.now());
 		lf2.setTipoLanc(TipoLancamento.DEBITO);
-		lf2.setValorLanc(40.0);
+		lf2.setValorLanc(50.25);
 		lf2.setHistLanc("Lancamento inicial para teste");
 		
 		cc.registrarLancamento(lf2);
