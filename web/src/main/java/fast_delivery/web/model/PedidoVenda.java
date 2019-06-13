@@ -28,6 +28,7 @@ public class PedidoVenda implements Serializable {
 	public RealizaVenda realizaVenda;
 	
 	List<PedidoVenda> listPedidoVenda = new ArrayList<>();
+	List<Produto> listProdutos = new ArrayList<>();
 	
 	public List<PedidoVenda> getlistPedidoVenda() {
 		return listPedidoVenda;
@@ -72,15 +73,23 @@ public class PedidoVenda implements Serializable {
 	}
 	
 	public boolean verificarDisponibilidadeProduto(PedidoVenda pv) {
+		try {
 		if(pv.getProdPedido().getQuantProduto() >0) {
-			atualizarEstoque();
+			atualizarEstoque(pv);
 			return true;
+		}
+		}catch(Exception e) {
+			System.out.println("Produto indisponivel");
 		}
 		return false;
 	}
 	
-	public void atualizarEstoque() {
-		
+	public void atualizarEstoque(PedidoVenda pvAtualizarEstoque) {
+		for(int i = 0; i < listProdutos.size();i++) {
+			if(listProdutos.get(i).equals(pvAtualizarEstoque.getProdPedido())) {
+				
+			}
+		}
 	}
 	
 	
