@@ -2,8 +2,8 @@ package fast_delivery.web.controller;
 
 import java.util.List;
 
-import fast_delivery.web.model.Cliente;
 import fast_delivery.web.model.ClienteModel;
+import fast_delivery.web.model.entidades.Cliente;
 
 public class ClienteController {
 

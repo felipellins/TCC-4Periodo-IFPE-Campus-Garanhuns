@@ -3,8 +3,8 @@ package fast_delivery.web;
 import java.util.ArrayList;
 import java.util.List;
 
-import fast_delivery.web.model.Empresa;
 import fast_delivery.web.model.EmpresaModel;
+import fast_delivery.web.model.entidades.Empresa;
 
 public class TesteFelipe {
 

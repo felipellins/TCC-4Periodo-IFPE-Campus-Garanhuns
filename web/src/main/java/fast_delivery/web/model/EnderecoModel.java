@@ -2,6 +2,9 @@ package fast_delivery.web.model;
 
 import java.util.List;
 
+import fast_delivery.web.model.dao.JDBCEnderecoDAO;
+import fast_delivery.web.model.entidades.Endereco;
+
 public class EnderecoModel {
 
 	JDBCEnderecoDAO end = new JDBCEnderecoDAO();

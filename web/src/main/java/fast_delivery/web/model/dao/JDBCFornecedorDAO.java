@@ -1,4 +1,4 @@
-package fast_delivery.web.model;
+package fast_delivery.web.model.dao;
 
 import java.util.List;
 
@@ -7,36 +7,32 @@ import javax.persistence.TypedQuery;
 import org.hibernate.Session;
 
 import fast_delivery.web.conexaobanco.HibernateUtil;
+import fast_delivery.web.model.entidades.Fornecedor;
 
-
-
-public class JDBCEmpresaDAO implements EmpresaDAO<Empresa> {
-
-	private static EmpresaDAO instance;
+public class JDBCFornecedorDAO implements FornecedorDao<Fornecedor>{
+ 
+	private static FornecedorDao instance;
 	
-	private JDBCEmpresaDAO () {
+	private JDBCFornecedorDAO () {
 		
 	}
 	
-	
-	public static EmpresaDAO getInstance() {
+	public static FornecedorDao getIntance() {
 		
-		if (instance == null) {
-			instance = new JDBCEmpresaDAO();
-
+		if(instance == null) {
+		   instance = new JDBCFornecedorDAO();
 		}
 		return instance;
-		
 	}
 	
 	
 	
 	@Override
-	public void inserir(Empresa emp) {
+	public void inserir(Fornecedor f) {
 		Session session = HibernateUtil.getSession();
 		try {
 			session.getTransaction().begin();
-			session.save(emp);
+			session.save(f);
 			session.getTransaction().commit();
 		} catch (Exception e) {
 			System.out.println("Erro ao inserir" + e.toString());
@@ -46,11 +42,11 @@ public class JDBCEmpresaDAO implements EmpresaDAO<Empresa> {
 	}
 
 	@Override
-	public void alterar(Empresa emp) {
+	public void alterar(Fornecedor f) {
 		Session session = HibernateUtil.getSession();
 		try {
 			session.getTransaction().begin();
-			session.update(emp);
+			session.update(f);
 			session.getTransaction().commit();
 		} catch (Exception e) {
 			session.getTransaction().rollback();
@@ -61,26 +57,26 @@ public class JDBCEmpresaDAO implements EmpresaDAO<Empresa> {
 	}
 
 	@Override
-	public Empresa recuperar(Integer emp) {
-		Empresa empresa = null;
+	public Fornecedor recuperar(Integer f) {
+		Fornecedor fornecedor = null;
 
 		Session session = HibernateUtil.getSession();
 		try {
-			empresa = session.find(Empresa.class, emp);
+			fornecedor = session.find(Fornecedor.class, f);
 			session.close();
 		} catch (Exception e) {
 			System.out.println("Erro ao recuperar " + e.toString());
 		}
-		return empresa;
+		return fornecedor;
 	}
 
 	@Override
-	public void deletar(Empresa emp) {
+	public void deletar(Fornecedor f) {
 		Session session = HibernateUtil.getSession();
-		System.out.println(emp.toString());
+		System.out.println(f.toString());
         try {
             session.getTransaction().begin();
-            session.delete(emp);
+            session.delete(f);
             session.getTransaction().commit();
         } catch (Exception e) {
             session.getTransaction().rollback();
@@ -91,13 +87,13 @@ public class JDBCEmpresaDAO implements EmpresaDAO<Empresa> {
 	}
 
 	@Override
-	public List<Empresa> listarTodos() {
-		List<Empresa> empresas;
+	public List<Fornecedor> listarTodos() {
+		List<Fornecedor> fornecedores;
 		try (Session session = HibernateUtil.getSession()) {
-			TypedQuery<Empresa> e = session.createNativeQuery("select * from empresa", Empresa.class);
-			empresas=e.getResultList();
-			if (empresas != null) {
-				return empresas;
+			TypedQuery<Fornecedor> e = session.createNativeQuery("select * from fornecedor", Fornecedor.class);
+			fornecedores=e.getResultList();
+			if (fornecedores != null) {
+				return fornecedores;
 			}
 
 		} catch (Exception e) {
@@ -106,7 +102,6 @@ public class JDBCEmpresaDAO implements EmpresaDAO<Empresa> {
 		return null;
 
 	}
-
-
+	
 
 }

@@ -1,9 +1,9 @@
 package fast_delivery.web.conexaobanco;
 import java.time.LocalDate;
 
-import fast_delivery.web.model.ContaCorrente;
-import fast_delivery.web.model.LancamentoFinanceiro;
-import fast_delivery.web.model.TipoLancamento;
+import fast_delivery.web.model.entidades.ContaCorrente;
+import fast_delivery.web.model.entidades.LancamentoFinanceiro;
+import fast_delivery.web.model.entidades.TipoLancamento;
 
 public class Teste {
 

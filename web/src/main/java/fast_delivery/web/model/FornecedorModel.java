@@ -2,9 +2,13 @@ package fast_delivery.web.model;
 
 import java.util.List;
 
+import fast_delivery.web.model.dao.Dao;
+import fast_delivery.web.model.dao.JDBCFornecedorDAO;
+import fast_delivery.web.model.entidades.Fornecedor;
+
 public class FornecedorModel {
 
-	DAO<Fornecedor> dao = JDBCFornecedorDAO.getIntance();
+	Dao<Fornecedor> dao = JDBCFornecedorDAO.getIntance();
 	
 	public void inserir(Fornecedor f) {
 		dao.inserir(f);

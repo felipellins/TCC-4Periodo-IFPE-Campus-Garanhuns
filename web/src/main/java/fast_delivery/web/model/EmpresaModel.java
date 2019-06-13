@@ -2,9 +2,13 @@ package fast_delivery.web.model;
 
 import java.util.List;
 
+import fast_delivery.web.model.dao.EmpresaDao;
+import fast_delivery.web.model.dao.JDBCEmpresaDAO;
+import fast_delivery.web.model.entidades.Empresa;
+
 public class EmpresaModel {
 
-	EmpresaDAO <Empresa> dao = JDBCEmpresaDAO.getInstance();
+	EmpresaDao <Empresa> dao = JDBCEmpresaDAO.getInstance();
 	
 	
 	public void inserir(Empresa em) {

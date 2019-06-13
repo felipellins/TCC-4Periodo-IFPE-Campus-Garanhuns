@@ -1,10 +1,11 @@
-package fast_delivery.web.model;
+package fast_delivery.web.model.dao;
 
 import java.util.List;
 import org.hibernate.Session;
 import fast_delivery.web.conexaobanco.HibernateUtil;
+import fast_delivery.web.model.entidades.Produto;
 
-public class JDBCProdutoDAO implements ProdutoDAO {
+public class JDBCProdutoDAO implements ProdutoDao {
 
 	public void inserir(Produto p) {
 

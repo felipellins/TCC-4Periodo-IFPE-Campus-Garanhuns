@@ -2,6 +2,9 @@ package fast_delivery.web.model;
 
 import java.util.List;
 
+import fast_delivery.web.model.dao.JDBCClienteDAO;
+import fast_delivery.web.model.entidades.Cliente;
+
 public class ClienteModel {
 
 	JDBCClienteDAO cli = new JDBCClienteDAO();
