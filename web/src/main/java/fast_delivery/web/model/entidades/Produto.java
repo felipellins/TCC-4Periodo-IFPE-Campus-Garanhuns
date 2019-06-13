@@ -24,9 +24,6 @@ public class Produto implements Serializable {
 	@Column(length = 5)
 	private double valorProduto;
 
-	@Column(length = 5)
-	private double quantProduto;
-
 	public String getNomeProduto() {
 		return nomeProduto;
 	}
@@ -43,18 +40,11 @@ public class Produto implements Serializable {
 		this.valorProduto = valorProduto;
 	}
 
-	public double getQuantProduto() {
-		return quantProduto;
-	}
 
-	public void setQuantProduto(double quantProduto) {
-		this.quantProduto = quantProduto;
-	}
-
-	public Produto(String nomeProduto, double valorProduto, double quantProduto) {
+	public Produto(String nomeProduto, double valorProduto) {
 		this.nomeProduto = nomeProduto;
 		this.valorProduto = valorProduto;
-		this.quantProduto = quantProduto;
+		//this.quantProduto = quantProduto;
 		// this.fornProduto = fornProduto;
 	}
 
@@ -63,7 +53,7 @@ public class Produto implements Serializable {
 	}
 
 	public String toString() {
-		return "Nome do Produto: " + this.nomeProduto + "\n Quantidade do produto: " + this.quantProduto
+		return "Nome do Produto: " + this.nomeProduto
 				+ "\n Valor do produto: " + this.valorProduto;
 	}
 

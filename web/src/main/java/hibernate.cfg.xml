@@ -8,18 +8,18 @@
 		<property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
 		<property name="hibernate.connection.url">jdbc:postgresql://localhost:5434/fastdelivery</property>
 		<property name="hibernate.connection.username">postgres</property>
-		<property name="hibernate.connection.password">marcela</property>
+		<property name="hibernate.connection.password">1234</property>
 		<property name="hibernate.show_sql">true</property>
-		<property name="hibernate.hbm2ddl.auto">update</property>
+		<property name="hibernate.hbm2ddl.auto">create</property>
 
-		<mapping class="fast_delivery.web.model.Cliente"></mapping>
-		<mapping class="fast_delivery.web.model.ContaCorrente"></mapping>
-		<mapping class="fast_delivery.web.model.Empresa"></mapping>
-		<mapping class="fast_delivery.web.model.Endereco"></mapping>
-		<mapping class="fast_delivery.web.model.Fornecedor"></mapping>
-		<mapping class="fast_delivery.web.model.Produto"></mapping>
-		<mapping class="fast_delivery.web.model.LancamentoFinanceiro"></mapping>
-		<mapping class="fast_delivery.web.model.PedidoVenda"></mapping>
+		<mapping class="fast_delivery.web.model.enitdades.Cliente"></mapping>
+		<mapping class="fast_delivery.web.model.enitdades.ContaCorrente"></mapping>
+		<mapping class="fast_delivery.web.model.enitdades.Empresa"></mapping>
+		<mapping class="fast_delivery.web.model.enitdades.Endereco"></mapping>
+		<mapping class="fast_delivery.web.model.enitdades.Fornecedor"></mapping>
+		<mapping class="fast_delivery.web.model.enitdades.Produto"></mapping>
+		<mapping class="fast_delivery.web.model.enitdades.LancamentoFinanceiro"></mapping>
+		<mapping class="fast_delivery.web.model.enitdades.PedidoVenda"></mapping>
 
 	</session-factory>
 </hibernate-configuration>
