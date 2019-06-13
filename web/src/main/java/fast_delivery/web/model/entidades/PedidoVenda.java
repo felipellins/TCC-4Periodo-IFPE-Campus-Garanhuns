@@ -1,4 +1,4 @@
-package fast_delivery.web.model;
+package fast_delivery.web.model.entidades;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -11,6 +11,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import fast_delivery.web.model.RealizaVenda;
 
 @Entity
 @Table(name="pedidoVenda")

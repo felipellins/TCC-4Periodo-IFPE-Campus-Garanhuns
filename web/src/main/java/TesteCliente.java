@@ -1,8 +1,8 @@
 import java.util.List;
 import fast_delivery.web.controller.ClienteController;
 import fast_delivery.web.controller.EnderecoController;
-import fast_delivery.web.model.Cliente;
-import fast_delivery.web.model.Endereco;
+import fast_delivery.web.model.entidades.Cliente;
+import fast_delivery.web.model.entidades.Endereco;
 
 public class TesteCliente {
 

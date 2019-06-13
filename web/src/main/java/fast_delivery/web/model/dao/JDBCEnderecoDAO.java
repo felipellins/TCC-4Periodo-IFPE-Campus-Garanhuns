@@ -1,10 +1,11 @@
-package fast_delivery.web.model;
+package fast_delivery.web.model.dao;
 
 import java.util.List;
 import org.hibernate.Session;
 import fast_delivery.web.conexaobanco.HibernateUtil;
+import fast_delivery.web.model.entidades.Endereco;
 
-	public class JDBCEnderecoDAO implements EnderecoDAO {
+	public class JDBCEnderecoDAO implements EnderecoDao {
 
 		public void inserir(Endereco e) {
 

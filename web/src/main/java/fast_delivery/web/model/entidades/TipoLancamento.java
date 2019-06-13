@@ -1,4 +1,4 @@
-package fast_delivery.web.model;
+package fast_delivery.web.model.entidades;
 
 public enum TipoLancamento {
 

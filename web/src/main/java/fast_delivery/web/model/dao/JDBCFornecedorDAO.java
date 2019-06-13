@@ -1,17 +1,38 @@
-package fast_delivery.web.model;
+package fast_delivery.web.model.dao;
 
 import java.util.List;
+
+import javax.persistence.TypedQuery;
+
 import org.hibernate.Session;
+
 import fast_delivery.web.conexaobanco.HibernateUtil;
+import fast_delivery.web.model.entidades.Fornecedor;
 
-public class JDBCProdutoDAO implements ProdutoDAO {
-
-	public void inserir(Produto p) {
-
+public class JDBCFornecedorDAO implements FornecedorDao<Fornecedor>{
+ 
+	private static FornecedorDao instance;
+	
+	private JDBCFornecedorDAO () {
+		
+	}
+	
+	public static FornecedorDao getIntance() {
+		
+		if(instance == null) {
+		   instance = new JDBCFornecedorDAO();
+		}
+		return instance;
+	}
+	
+	
+	
+	@Override
+	public void inserir(Fornecedor f) {
 		Session session = HibernateUtil.getSession();
 		try {
 			session.getTransaction().begin();
-			session.save(p);
+			session.save(f);
 			session.getTransaction().commit();
 		} catch (Exception e) {
 			System.out.println("Erro ao inserir" + e.toString());
@@ -20,11 +41,12 @@ public class JDBCProdutoDAO implements ProdutoDAO {
 		}
 	}
 
-	public void alterar(Produto p) {
+	@Override
+	public void alterar(Fornecedor f) {
 		Session session = HibernateUtil.getSession();
 		try {
 			session.getTransaction().begin();
-			session.update(p);
+			session.update(f);
 			session.getTransaction().commit();
 		} catch (Exception e) {
 			session.getTransaction().rollback();
@@ -32,28 +54,29 @@ public class JDBCProdutoDAO implements ProdutoDAO {
 		} finally {
 			session.close();
 		}
-
 	}
 
-	public Produto recuperar(Integer p) {
-		Produto produto = null;
+	@Override
+	public Fornecedor recuperar(Integer f) {
+		Fornecedor fornecedor = null;
 
 		Session session = HibernateUtil.getSession();
 		try {
-			produto = session.find(Produto.class, p);
+			fornecedor = session.find(Fornecedor.class, f);
 			session.close();
 		} catch (Exception e) {
 			System.out.println("Erro ao recuperar " + e.toString());
 		}
-		return produto;
+		return fornecedor;
 	}
 
-	public void deletar(Produto p) {
+	@Override
+	public void deletar(Fornecedor f) {
 		Session session = HibernateUtil.getSession();
-		System.out.println(p.toString());
+		System.out.println(f.toString());
         try {
             session.getTransaction().begin();
-            session.delete(p);
+            session.delete(f);
             session.getTransaction().commit();
         } catch (Exception e) {
             session.getTransaction().rollback();
@@ -63,11 +86,14 @@ public class JDBCProdutoDAO implements ProdutoDAO {
         }
 	}
 
-	public List<Produto> listarTodos() {
+	@Override
+	public List<Fornecedor> listarTodos() {
+		List<Fornecedor> fornecedores;
 		try (Session session = HibernateUtil.getSession()) {
-			List<Produto> produtos = session.createNativeQuery("select * from produto").list();
-			if (produtos != null) {
-				return produtos;
+			TypedQuery<Fornecedor> e = session.createNativeQuery("select * from fornecedor", Fornecedor.class);
+			fornecedores=e.getResultList();
+			if (fornecedores != null) {
+				return fornecedores;
 			}
 
 		} catch (Exception e) {
@@ -76,5 +102,6 @@ public class JDBCProdutoDAO implements ProdutoDAO {
 		return null;
 
 	}
+	
 
 }
