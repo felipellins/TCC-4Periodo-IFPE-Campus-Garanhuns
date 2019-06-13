@@ -1,8 +1,10 @@
-package fast_delivery.web.model;
+package fast_delivery.web.model.dao;
 
 import java.util.List;
 
-public class JDBCContaCorrenteDAO implements ContaCorrenteDAO{
+import fast_delivery.web.model.entidades.ContaCorrente;
+
+public class JDBCContaCorrenteDAO implements ContaCorrenteDao{
 
 	public void inserir(ContaCorrente d) {
 		// TODO Auto-generated method stub

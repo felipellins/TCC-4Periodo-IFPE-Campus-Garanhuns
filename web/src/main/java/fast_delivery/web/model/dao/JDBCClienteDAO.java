@@ -1,4 +1,4 @@
-package fast_delivery.web.model;
+package fast_delivery.web.model.dao;
 
 import java.util.List;
 
@@ -6,8 +6,9 @@ import javax.persistence.TypedQuery;
 
 import org.hibernate.Session;
 import fast_delivery.web.conexaobanco.HibernateUtil;
+import fast_delivery.web.model.entidades.Cliente;
 
-	public class JDBCClienteDAO implements ClienteDAO {
+	public class JDBCClienteDAO implements ClienteDao {
 
 		public void inserir(Cliente c) {
 

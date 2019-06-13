@@ -4,6 +4,9 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import fast_delivery.web.model.entidades.FormaDePagamento;
+import fast_delivery.web.model.entidades.PedidoVenda;
+
 public class RealizaVenda {
 	
 	private int idVenda;

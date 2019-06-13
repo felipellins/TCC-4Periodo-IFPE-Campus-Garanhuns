@@ -1,8 +1,8 @@
-package fast_delivery.web.model;
+package fast_delivery.web.model.dao;
 
 import java.util.List;
 
-public interface DAO<T> {
+public interface Dao<T> {
 
 	public void inserir(T d);
 
