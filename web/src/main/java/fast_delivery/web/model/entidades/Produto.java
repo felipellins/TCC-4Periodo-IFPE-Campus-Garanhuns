@@ -6,6 +6,7 @@ import java.io.Serializable;
 //import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,7 +24,11 @@ public class Produto implements Serializable {
 
 	@Column(length = 5)
 	private double valorProduto;
+	
+	@Embedded
+	private ControleEstoque controleEstoque;
 
+	
 	public String getNomeProduto() {
 		return nomeProduto;
 	}
@@ -39,11 +44,20 @@ public class Produto implements Serializable {
 	public void setValorProduto(double valorProduto) {
 		this.valorProduto = valorProduto;
 	}
+	
+	public ControleEstoque getControleEstoque() {
+		return controleEstoque;
+	}
+
+	public void setControleEstoque(ControleEstoque controleEstoque) {
+		this.controleEstoque = controleEstoque;
+	}
 
 
-	public Produto(String nomeProduto, double valorProduto) {
+	public Produto(String nomeProduto, double valorProduto, ControleEstoque controleEstoque) {
 		this.nomeProduto = nomeProduto;
 		this.valorProduto = valorProduto;
+		this.controleEstoque = controleEstoque;
 		//this.quantProduto = quantProduto;
 		// this.fornProduto = fornProduto;
 	}
@@ -54,7 +68,7 @@ public class Produto implements Serializable {
 
 	public String toString() {
 		return "Nome do Produto: " + this.nomeProduto
-				+ "\n Valor do produto: " + this.valorProduto;
+				+ "\n Valor do produto: " + this.valorProduto + "\n Quantidade disponivel " + this.controleEstoque.getQuantProdEstoque();
 	}
 
 	@Override

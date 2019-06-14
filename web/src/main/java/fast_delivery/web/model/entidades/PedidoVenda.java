@@ -14,8 +14,7 @@ import javax.persistence.Table;
 
 import fast_delivery.web.model.RealizaVenda;
 
-@Entity
-@Table(name="pedidoVenda")
+
 public class PedidoVenda implements Serializable {
 	
 	@Id
@@ -75,14 +74,7 @@ public class PedidoVenda implements Serializable {
 	}
 	
 	public boolean verificarDisponibilidadeProduto(PedidoVenda pv) {
-		try {
-		if(pv.getProdPedido().getQuantProduto() >0) {
-			atualizarEstoque(pv);
-			return true;
-		}
-		}catch(Exception e) {
-			System.out.println("Produto indisponivel");
-		}
+		
 		return false;
 	}
 	
