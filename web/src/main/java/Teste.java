@@ -1,30 +1,28 @@
-import fast_delivery.web.controller.ControleEstoqueController;
-import fast_delivery.web.controller.ProdutoController;
-import fast_delivery.web.model.entidades.ControleEstoque;
-import fast_delivery.web.model.entidades.Produto;
 
 public class Teste {
 
 	public static void main(String[] args) {
 
-		ControleEstoque ce = new ControleEstoque();
-		ce.setQuantProdEstoque(10);
-		
-		
-		Produto p = new Produto("Teste", 5.0, ce);
+		int a[] = { 2, 3, 5, 1, 4 };
+		int aux;
 
-		Produto p1 = new Produto("Test2", 10.0, ce);
-		
-		Produto p2 = new Produto("Test3", 12.0, ce);
-		
-		ce.inserirProdutoEstoque(p);
-		ce.inserirProdutoEstoque(p1);
-		ce.inserirProdutoEstoque(p2);
-		
-		ce.removerQuantidadeProdutoEstoque(p1, 6);
-		ce.adicionarQuantidadeProdutoEstoque(p1, 5);
-		
-		//ce.listarProdutosEstoque();
-		
+		for (int i = 0; i < a.length; i++) {
+
+			for (int j = 0; j < a.length - 1; i++) {
+
+				if (a[j] > a[j + 1]) {
+					aux = a[j];
+					a[j] = a[j + 1];
+					a[j + 1] = aux;
+
+				}
+
+			}
+		}
+
+		for (int i = 0; i < a.length; i++) {
+			System.out.println(a[i]);
+		}
+
 	}
 }
