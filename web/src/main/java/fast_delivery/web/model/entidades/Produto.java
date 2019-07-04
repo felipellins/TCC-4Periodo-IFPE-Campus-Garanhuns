@@ -72,28 +72,36 @@ public class Produto implements Serializable {
 	}
 
 	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (obj == null) {
-			return false;
-		}
-		if (getClass() != obj.getClass()) {
-			return false;
-		}
-		final Produto other = (Produto) obj;
-		if (this.id != other.id) {
-			return false;
-		}
-		return true;
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((nomeProduto == null) ? 0 : nomeProduto.hashCode());
+		long temp;
+		temp = Double.doubleToLongBits(valorProduto);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		return result;
 	}
 
 	@Override
-	public int hashCode() {
-		int hash = 5;
-		hash = 67 * hash + this.id;
-		return hash;
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Produto other = (Produto) obj;
+		if (nomeProduto == null) {
+			if (other.nomeProduto != null)
+				return false;
+		} else if (!nomeProduto.equals(other.nomeProduto))
+			return false;
+		if (Double.doubleToLongBits(valorProduto) != Double.doubleToLongBits(other.valorProduto))
+			return false;
+		return true;
 	}
+
+	
+	
 
 }

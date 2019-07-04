@@ -51,11 +51,25 @@ public class ControleEstoque {
 		
 	}
 
+	public boolean verificarExistenciaProdutoEstoque(Produto p) {
+		for (Produto produto : listProdutosEstoque) {
+			if(produto.equals(p)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
 	public void inserirProdutoEstoque(Produto p) {
-		listProdutosEstoque.add(p);
+		if(verificarExistenciaProdutoEstoque(p) == true) {
+			System.out.println(p.toString() + "\n Já cadastrado, tente novamente!\n------------------\n");
+		}else {
+			listProdutosEstoque.add(p);
+		}
 	}
 	
 	public void listarProdutosEstoque() {
+		
 		for (Produto produto : listProdutosEstoque) {
 			System.out.println(produto.toString());
 		}
@@ -64,22 +78,38 @@ public class ControleEstoque {
 	public void removerQuantidadeProdutoEstoque(Produto p, int quantProduto) {
 		for (Produto produto : listProdutosEstoque) {
 			if(produto == p) {
-				
+				if(quantProduto > 0) {
 				System.out.println("Produto passado como parametro " + p.toString());
 				produto.getControleEstoque().setQuantProdEstoque(p.getControleEstoque().getQuantProdEstoque() - quantProduto);
-				System.out.println("Produto retidado as quantidades " + produto.toString());
+				System.out.println("Produto retidado, quantidades " + produto.toString());
+				}else {
+					System.out.println("Produto ou quantidade incorretas");
+				}
 			}
 		}
 	}
 	public void adicionarQuantidadeProdutoEstoque(Produto p, int quantProduto) {
-		for (Produto produto : listProdutosEstoque) {
+		for (Produto produto : listProdutosEstoque)
 			if(produto == p) {
-				
+				if (quantProduto > 0) {
 				System.out.println("Produto passado como parametro " + p.toString());
 				produto.getControleEstoque().setQuantProdEstoque(p.getControleEstoque().getQuantProdEstoque() + quantProduto);
-				System.out.println("Produto adicionado as quantidades " + produto.toString());
+				System.out.println("Produto adicionado, quantidades " + produto.toString());
+				}else {
+					System.out.println("Produto ou quantidade incorretas");
+				}
 			}
 		}
+	
+	
+	public void removerProdutoEstoque(Produto p) {
+		for(int i = 0; i < listProdutosEstoque.size();i++) {
+			if(listProdutosEstoque.get(i) == p) {
+				System.out.println("Produto que foi removido: " + p.toString());
+				listProdutosEstoque.remove(i);
+			}
+		}
+	
 	}
 
 }
