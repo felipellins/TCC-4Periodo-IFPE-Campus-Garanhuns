@@ -80,7 +80,7 @@ public class ControleEstoque {
 			if(produto == p) {
 				if(quantProduto > 0) {
 				System.out.println("Produto passado como parametro " + p.toString());
-				produto.getControleEstoque().setQuantProdEstoque(p.getControleEstoque().getQuantProdEstoque() - quantProduto);
+				//produto.getControleEstoque().setQuantProdEstoque(p.getControleEstoque().getQuantProdEstoque() - quantProduto);
 				System.out.println("Produto retidado, quantidades " + produto.toString());
 				}else {
 					System.out.println("Produto ou quantidade incorretas");
@@ -93,7 +93,7 @@ public class ControleEstoque {
 			if(produto == p) {
 				if (quantProduto > 0) {
 				System.out.println("Produto passado como parametro " + p.toString());
-				produto.getControleEstoque().setQuantProdEstoque(p.getControleEstoque().getQuantProdEstoque() + quantProduto);
+				//produto.getControleEstoque().setQuantProdEstoque(p.getControleEstoque().getQuantProdEstoque() + quantProduto);
 				System.out.println("Produto adicionado, quantidades " + produto.toString());
 				}else {
 					System.out.println("Produto ou quantidade incorretas");

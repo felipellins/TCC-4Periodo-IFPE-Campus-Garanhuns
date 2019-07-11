@@ -1,38 +1,33 @@
-import fast_delivery.web.model.entidades.ControleEstoque;
-import fast_delivery.web.model.entidades.Produto;
+
+import java.time.LocalDate;
+
+import fast_delivery.web.model.entidades.ContaCorrente;
+import fast_delivery.web.model.entidades.LancamentoFinanceiro;
+import fast_delivery.web.model.entidades.TipoLancamento;
 
 public class Teste {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+
+		ContaCorrente cc = new ContaCorrente("00", "00");
 		
+		LancamentoFinanceiro lf = new LancamentoFinanceiro();
+		lf.setDataLanc(LocalDate.now());
+		lf.setTipoLanc(TipoLancamento.CREDITO);
+		lf.setValorLanc(100.0);
+		lf.setHistLanc("Lancamento inicial para teste");
 		
-		ControleEstoque ce = new ControleEstoque();
-		ce.setQuantProdEstoque(0);
+		cc.registrarLancamento(lf);
 		
-		Produto p = new Produto();
-		Produto p2 = new Produto();
+		LancamentoFinanceiro lf2 = new LancamentoFinanceiro();
+		lf2.setDataLanc(LocalDate.now());
+		lf2.setTipoLanc(TipoLancamento.DEBITO);
+		lf2.setValorLanc(40.0);
+		lf2.setHistLanc("Lancamento inicial para teste");
 		
-		p.setNomeProduto("Arroz verde");
-		p.setValorProduto(6.5);
-		p.setControleEstoque(ce);
+		cc.registrarLancamento(lf2);
 		
-		p2.setNomeProduto("Arroz verde");
-		p2.setValorProduto(6.8);
-		p2.setControleEstoque(ce);
-		
-		ce.inserirProdutoEstoque(p);
-		ce.inserirProdutoEstoque(p2);
-		
-		
-		
-		ce.listarProdutosEstoque();
-		
-		//ce.removerProdutoEstoque(p2);
-		
-		//ce.listarProdutosEstoque();
-		
+		System.out.println(cc.getSaldoConta());
 		
 	}
-
 }
