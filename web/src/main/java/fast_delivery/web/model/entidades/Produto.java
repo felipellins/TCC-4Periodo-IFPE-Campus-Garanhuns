@@ -1,12 +1,7 @@
 package fast_delivery.web.model.entidades;
 
 import java.io.Serializable;
-
-//import java.util.ArrayList;
-//import java.util.List;
-
 import javax.persistence.Column;
-import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,16 +12,18 @@ public class Produto implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+	private int idProduto;
 
-	@Column(length = 30)
+	@Column
 	private String nomeProduto;
-
-	@Column(length = 5)
+	
+	@Column
 	private double valorProduto;
 
-//	@Embedded
-//	private ControleEstoque controleEstoque;
+	@Column
+	private double quantProduto;
+	
+	private Fornecedor fornProduto;
 
 	public String getNomeProduto() {
 		return nomeProduto;
@@ -44,37 +41,49 @@ public class Produto implements Serializable {
 		this.valorProduto = valorProduto;
 	}
 
-//	public ControleEstoque getControleEstoque() {
-//		return controleEstoque;
-//	}
-//
-//	public void setControleEstoque(ControleEstoque controleEstoque) {
-//		this.controleEstoque = controleEstoque;
-//	}
+	public double getQuantProduto() {
+		return quantProduto;
+	}
 
-	public Produto(String nomeProduto, double valorProduto) {
+	public void setQuantProduto(double quantProduto) {
+		this.quantProduto = quantProduto;
+	}
+
+	public Fornecedor getFornProduto() {
+		return fornProduto;
+	}
+
+	public void setFornProduto(Fornecedor fornProduto) {
+		this.fornProduto = fornProduto;
+	}
+
+	public Produto(String nomeProduto, double valorProduto, double quantProduto, Fornecedor fornProduto) {
+		super();
 		this.nomeProduto = nomeProduto;
 		this.valorProduto = valorProduto;
-		// this.controleEstoque = controleEstoque;
-		// this.quantProduto = quantProduto;
-		// this.fornProduto = fornProduto;
+		this.quantProduto = quantProduto;
+		this.fornProduto = fornProduto;
+	}
+	
+	public Produto () {
+		
 	}
 
-	public Produto() {
-
-	}
-
+	@Override
 	public String toString() {
-		return "Nome do Produto: " + this.nomeProduto
-				+ "\n Valor do produto: " + this.valorProduto /*"\n Quantidade disponivel " + this.controleEstoque.getQuantProdEstoque()*/;
+		return "Produto [nomeProduto=" + nomeProduto + ", valorProduto=" + valorProduto + ", quantProduto="
+				+ quantProduto + ", fornProduto=" + fornProduto + "]";
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((fornProduto == null) ? 0 : fornProduto.hashCode());
 		result = prime * result + ((nomeProduto == null) ? 0 : nomeProduto.hashCode());
 		long temp;
+		temp = Double.doubleToLongBits(quantProduto);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
 		temp = Double.doubleToLongBits(valorProduto);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		return result;
@@ -89,10 +98,17 @@ public class Produto implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Produto other = (Produto) obj;
+		if (fornProduto == null) {
+			if (other.fornProduto != null)
+				return false;
+		} else if (!fornProduto.equals(other.fornProduto))
+			return false;
 		if (nomeProduto == null) {
 			if (other.nomeProduto != null)
 				return false;
 		} else if (!nomeProduto.equals(other.nomeProduto))
+			return false;
+		if (Double.doubleToLongBits(quantProduto) != Double.doubleToLongBits(other.quantProduto))
 			return false;
 		if (Double.doubleToLongBits(valorProduto) != Double.doubleToLongBits(other.valorProduto))
 			return false;

@@ -4,14 +4,14 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import fast_delivery.web.model.entidades.FormaDePagamento;
+import fast_delivery.web.model.entidades.FormaDePagamento_Recebimento;
 import fast_delivery.web.model.entidades.PedidoVenda;
 
 public class RealizaVenda {
 	
 	private int idVenda;
 	private LocalDate dataVenda;
-	private FormaDePagamento formaPagamentoVenda;
+	private FormaDePagamento_Recebimento formaPagamentoVenda;
 	private boolean statusVenda = false;
 	
 	public PedidoVenda pedVenda;
@@ -30,11 +30,11 @@ public class RealizaVenda {
 		this.dataVenda = dataVenda;
 	}
 
-	public FormaDePagamento getFormaPagamentoVenda() {
+	public FormaDePagamento_Recebimento getFormaPagamentoVenda() {
 		return formaPagamentoVenda;
 	}
 
-	public void setFormaPagamentoVenda(FormaDePagamento formaPagamentoVenda) {
+	public void setFormaPagamentoVenda(FormaDePagamento_Recebimento formaPagamentoVenda) {
 		this.formaPagamentoVenda = formaPagamentoVenda;
 	}
 
@@ -46,7 +46,7 @@ public class RealizaVenda {
 		this.pedVenda = pedVenda;
 	}
 
-	public RealizaVenda(LocalDate dataVenda, FormaDePagamento formaPagamentoVenda, PedidoVenda pedVenda, boolean statusVenda) {
+	public RealizaVenda(LocalDate dataVenda, FormaDePagamento_Recebimento formaPagamentoVenda, PedidoVenda pedVenda, boolean statusVenda) {
 		
 		this.dataVenda = dataVenda;
 		this.formaPagamentoVenda = formaPagamentoVenda;
