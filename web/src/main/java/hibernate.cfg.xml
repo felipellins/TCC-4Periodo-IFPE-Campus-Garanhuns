@@ -10,7 +10,7 @@
 		<property name="hibernate.connection.username">postgres</property>
 		<property name="hibernate.connection.password">1234</property>
 		<property name="hibernate.show_sql">true</property>
-		<property name="hibernate.hbm2ddl.auto">create</property>
+		<property name="hibernate.hbm2ddl.auto">update</property>
 
 		<mapping class="fast_delivery.web.model.entidades.Cliente"></mapping>
 		<mapping class="fast_delivery.web.model.entidades.ContaCorrente"></mapping>
@@ -20,7 +20,7 @@
 		<mapping class="fast_delivery.web.model.entidades.Produto"></mapping>
 		<mapping class="fast_delivery.web.model.entidades.LancamentoFinanceiro"></mapping>
 		<mapping class="fast_delivery.web.model.entidades.PedidoVenda"></mapping>
-		<mapping class="fast_delivery.web.model.entidades.ControleEstoque"></mapping>
+		<mapping class="fast_delivery.web.model.entidades.FormaDePagamento"></mapping>
 		
 
 	</session-factory>

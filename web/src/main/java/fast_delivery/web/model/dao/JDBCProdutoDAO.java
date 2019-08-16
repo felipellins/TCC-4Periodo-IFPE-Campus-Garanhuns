@@ -4,6 +4,7 @@ import java.util.List;
 import org.hibernate.Session;
 import fast_delivery.web.conexaobanco.HibernateUtil;
 import fast_delivery.web.model.entidades.Produto;
+import fast_delivery.web.model.entidades.VendaDeMercadoria;
 
 public class JDBCProdutoDAO implements ProdutoDao {
 

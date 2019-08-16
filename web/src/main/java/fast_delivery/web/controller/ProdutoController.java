@@ -14,58 +14,29 @@ import fast_delivery.web.model.entidades.Produto;
 @SessionScoped
 public class ProdutoController{
 	
-	private Produto produto;
-	private ProdutoModel produtoModel;
-	
-	@PostConstruct
-    public void init() {
-        produto = new Produto();
-        produtoModel = new ProdutoModel();
-    }
-	
-	public ProdutoController() {
-		
+	ProdutoModel pm = new ProdutoModel();
+
+	public void inserirProdutoAction(Produto p) {
+		pm.inserir(p);
 	}
 
-	public void inserirProdutoAction() {
-		produtoModel.inserir(produto);
-	}
-
-	public void alterarProdutoAction() {
-		produtoModel.alterar(produto);
+	public void alterarProdutoAction(Produto p) {
+		pm.alterar(p);
 	}
 
 	public Produto recuperarProdutoAction(Integer p) {
 
-		return produtoModel.recuperar(p);
+		return pm.recuperar(p);
 	}
 
-	public void deletarProdutoAction() {
-		produtoModel.deletar(produto);
+	public void deletarProdutoAction(Produto p) {
+		pm.deletar(p);
 
 	}
 
 	public List<Produto> listarTodosProdutoAction() {
 
-		return produtoModel.listarTodos();
+		return pm.listarTodos();
 	}
-
-	public Produto getProduto() {
-		return produto;
-	}
-
-	public void setP(Produto produto) {
-		this.produto = produto;
-	}
-
-	public ProdutoModel getprodutoModel() {
-		return produtoModel;
-	}
-
-	public void setPm(ProdutoModel produtoModel) {
-		this.produtoModel = produtoModel;
-	}
-
-	
 	
 }

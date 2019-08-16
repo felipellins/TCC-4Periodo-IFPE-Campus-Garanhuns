@@ -2,10 +2,12 @@ package fast_delivery.web.model.entidades;
 
 import java.io.Serializable;
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Produto implements Serializable {
@@ -13,17 +15,50 @@ public class Produto implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int idProduto;
+	
+	@Column
+	private String codProduto;
 
 	@Column
 	private String nomeProduto;
 	
 	@Column
-	private double valorProduto;
+	private double precoCustoProduto;
+	
+	@Column
+	private double margemLucroProduto;
+	
+	@Column
+	private double precoVendaProduto;
 
 	@Column
-	private double quantProduto;
+	private int quantProduto;
+
+	public Produto(String codProduto, String nomeProduto, double precoCustoProduto, double margemLucroProduto,
+			double precoVendaProduto, int quantProduto) {
+		this.codProduto = codProduto;
+		this.nomeProduto = nomeProduto;
+		this.precoCustoProduto = precoCustoProduto;
+		this.margemLucroProduto = margemLucroProduto;
+		this.precoVendaProduto = precoVendaProduto;
+		this.quantProduto = quantProduto;
+	}
 	
-	private Fornecedor fornProduto;
+	public Produto() {
+		
+	}
+	
+	public int getIdProduto() {
+		return idProduto;
+	}
+
+	public String getCodProduto() {
+		return codProduto;
+	}
+
+	public void setCodProduto(String codProduto) {
+		this.codProduto = codProduto;
+	}
 
 	public String getNomeProduto() {
 		return nomeProduto;
@@ -33,59 +68,51 @@ public class Produto implements Serializable {
 		this.nomeProduto = nomeProduto;
 	}
 
-	public double getValorProduto() {
-		return valorProduto;
+	public double getPrecoCustoProduto() {
+		return precoCustoProduto;
 	}
 
-	public void setValorProduto(double valorProduto) {
-		this.valorProduto = valorProduto;
+	public void setPrecoCustoProduto(double precoCustoProduto) {
+		this.precoCustoProduto = precoCustoProduto;
 	}
 
-	public double getQuantProduto() {
+	public double getMargemLucroProduto() {
+		return margemLucroProduto;
+	}
+
+	public void setMargemLucroProduto(double margemLucroProduto) {
+		this.margemLucroProduto = margemLucroProduto;
+	}
+
+	public double getPrecoVendaProduto() {
+		return precoVendaProduto;
+	}
+
+	public void setPrecoVendaProduto(double precoVendaProduto) {
+		this.precoVendaProduto = precoVendaProduto;
+	}
+
+	public int getQuantProduto() {
 		return quantProduto;
 	}
 
-	public void setQuantProduto(double quantProduto) {
+	public void setQuantProduto(int quantProduto) {
 		this.quantProduto = quantProduto;
-	}
-
-	public Fornecedor getFornProduto() {
-		return fornProduto;
-	}
-
-	public void setFornProduto(Fornecedor fornProduto) {
-		this.fornProduto = fornProduto;
-	}
-
-	public Produto(String nomeProduto, double valorProduto, double quantProduto, Fornecedor fornProduto) {
-		super();
-		this.nomeProduto = nomeProduto;
-		this.valorProduto = valorProduto;
-		this.quantProduto = quantProduto;
-		this.fornProduto = fornProduto;
-	}
-	
-	public Produto () {
-		
 	}
 
 	@Override
 	public String toString() {
-		return "Produto [nomeProduto=" + nomeProduto + ", valorProduto=" + valorProduto + ", quantProduto="
-				+ quantProduto + ", fornProduto=" + fornProduto + "]";
+		return "Produto [codProduto=" + codProduto + ", nomeProduto=" + nomeProduto + ", precoCustoProduto="
+				+ precoCustoProduto + ", margemLucroProduto=" + margemLucroProduto + ", precoVendaProduto="
+				+ precoVendaProduto + ", quantProduto=" + quantProduto + "]";
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((fornProduto == null) ? 0 : fornProduto.hashCode());
-		result = prime * result + ((nomeProduto == null) ? 0 : nomeProduto.hashCode());
-		long temp;
-		temp = Double.doubleToLongBits(quantProduto);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		temp = Double.doubleToLongBits(valorProduto);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + ((codProduto == null) ? 0 : codProduto.hashCode());
+		result = prime * result + idProduto;
 		return result;
 	}
 
@@ -98,20 +125,16 @@ public class Produto implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Produto other = (Produto) obj;
-		if (fornProduto == null) {
-			if (other.fornProduto != null)
+		if (codProduto == null) {
+			if (other.codProduto != null)
 				return false;
-		} else if (!fornProduto.equals(other.fornProduto))
+		} else if (!codProduto.equals(other.codProduto))
 			return false;
-		if (nomeProduto == null) {
-			if (other.nomeProduto != null)
-				return false;
-		} else if (!nomeProduto.equals(other.nomeProduto))
-			return false;
-		if (Double.doubleToLongBits(quantProduto) != Double.doubleToLongBits(other.quantProduto))
-			return false;
-		if (Double.doubleToLongBits(valorProduto) != Double.doubleToLongBits(other.valorProduto))
+		if (idProduto != other.idProduto)
 			return false;
 		return true;
 	}
+	
+	
+	
 }

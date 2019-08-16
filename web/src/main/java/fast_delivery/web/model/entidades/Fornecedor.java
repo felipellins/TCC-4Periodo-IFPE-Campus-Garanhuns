@@ -17,61 +17,51 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "fornecedor")
 public class Fornecedor {
-    
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int idFornecedor;
 	@Column
 	private String nomeFornecedor;
 	@Column
 	private String cpfFornecedor;
-	
-	@ManyToOne(fetch= FetchType.EAGER, cascade = CascadeType.ALL)
+
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private Endereco endereco;
+
+	// List<Fornecedor>listaDeFornecedores = new ArrayList <Fornecedor>();
 	
 	
-	//List<Fornecedor>listaDeFornecedores = new  ArrayList <Fornecedor>();
-		
-	public Fornecedor() {
-		this.endereco= new Endereco();
-	}
-	
-	public Fornecedor( String nomeFornecedor, String cpfFornecedor, Endereco endereco) {
-		super();
-		
+
+	public Fornecedor(String nomeFornecedor, String cpfFornecedor, Endereco endereco) {
+
 		this.nomeFornecedor = nomeFornecedor;
 		this.cpfFornecedor = cpfFornecedor;
-		this.endereco=endereco;
+		this.endereco = endereco;
 	}
-
-
-	public int getIdFornecedor() {
-		return idFornecedor;
-	}
-
-
-	public void setIdFornecedor(int idFornecedor) {
-		this.idFornecedor = idFornecedor;
-	}
-
 
 	public String getNomeFornecedor() {
 		return nomeFornecedor;
 	}
 
-
 	public void setNomeFornecedor(String nomeFornecedor) {
 		this.nomeFornecedor = nomeFornecedor;
 	}
-
 
 	public String getCpfFornecedor() {
 		return cpfFornecedor;
 	}
 
-
 	public void setCpfFornecedor(String cpfFornecedor) {
 		this.cpfFornecedor = cpfFornecedor;
+	}
+
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
 	}
 
 	@Override
@@ -111,12 +101,4 @@ public class Fornecedor {
 				+ endereco + "]";
 	}
 
-
-	
-	
-	
-	
-	
-	
 }
-

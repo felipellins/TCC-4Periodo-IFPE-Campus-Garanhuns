@@ -7,11 +7,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class FormaDePagamento_Recebimento {
+public class FormaDePagamento {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int idFormaDePagamento_Recebimento;
+	private int idFormaDePagamento;
 	
 	@Column
 	private String DescricaoFormaPagamento;
@@ -19,20 +19,36 @@ public class FormaDePagamento_Recebimento {
 	@Column
 	private int quantidadeDeParcelas;
 
-	public FormaDePagamento_Recebimento(String descricaoFormaPagamento, int quantidadeDeParcelas) {
+	public FormaDePagamento(String descricaoFormaPagamento, int quantidadeDeParcelas) {
 		super();
 		DescricaoFormaPagamento = descricaoFormaPagamento;
 		this.quantidadeDeParcelas = quantidadeDeParcelas;
 	}
 	
-	public FormaDePagamento_Recebimento() {
+	public FormaDePagamento() {
 		
+	}
+
+	public String getDescricaoFormaPagamento() {
+		return DescricaoFormaPagamento;
+	}
+
+	public void setDescricaoFormaPagamento(String descricaoFormaPagamento) {
+		DescricaoFormaPagamento = descricaoFormaPagamento;
+	}
+
+	public int getQuantidadeDeParcelas() {
+		return quantidadeDeParcelas;
+	}
+
+	public void setQuantidadeDeParcelas(int quantidadeDeParcelas) {
+		this.quantidadeDeParcelas = quantidadeDeParcelas;
 	}
 
 	@Override
 	public String toString() {
-		return "FormaDePagamento_Recebimento [DescricaoFormaPagamento=" + DescricaoFormaPagamento
-				+ ", quantidadeDeParcelas=" + quantidadeDeParcelas + "]";
+		return "FormaDePagamento [idFormaDePagamento=" + idFormaDePagamento + ", DescricaoFormaPagamento="
+				+ DescricaoFormaPagamento + ", quantidadeDeParcelas=" + quantidadeDeParcelas + "]";
 	}
 
 	@Override
@@ -40,6 +56,7 @@ public class FormaDePagamento_Recebimento {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((DescricaoFormaPagamento == null) ? 0 : DescricaoFormaPagamento.hashCode());
+		result = prime * result + idFormaDePagamento;
 		result = prime * result + quantidadeDeParcelas;
 		return result;
 	}
@@ -52,16 +69,19 @@ public class FormaDePagamento_Recebimento {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		FormaDePagamento_Recebimento other = (FormaDePagamento_Recebimento) obj;
+		FormaDePagamento other = (FormaDePagamento) obj;
 		if (DescricaoFormaPagamento == null) {
 			if (other.DescricaoFormaPagamento != null)
 				return false;
 		} else if (!DescricaoFormaPagamento.equals(other.DescricaoFormaPagamento))
 			return false;
+		if (idFormaDePagamento != other.idFormaDePagamento)
+			return false;
 		if (quantidadeDeParcelas != other.quantidadeDeParcelas)
 			return false;
 		return true;
 	}
+
 	
 	
 }

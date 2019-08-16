@@ -14,7 +14,7 @@ public class VendaDeMercadoria {
 	private int idVendaMercadoria;
 	
 	@Column
-	private PedidoVenda pedidoVenda;
+	public PedidoVenda pedidoVenda;
 	
 	@Column
 	private boolean statusVendaMercadoria = false;

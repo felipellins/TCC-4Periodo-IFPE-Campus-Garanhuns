@@ -10,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -20,10 +22,10 @@ public class PedidoVenda implements Serializable {
 	private int idPedidoVenda;
 	
 	@Column
-	private Cliente nomeClientePedido;
+	private Cliente clientePedido;
 	
-	@Column
-	private Produto produtosPedido;
+	@OneToMany
+	private List<Produto> produtosPedido;
 	
 	@Column
 	private LocalDate DataPedido;
@@ -31,8 +33,8 @@ public class PedidoVenda implements Serializable {
 	@Column
 	private double quantidadeDeProdutosPedido;
 	
-	@Column
-	private FormaDePagamento_Recebimento formaDePagamentoPedido;
+	@OneToOne
+	private FormaDePagamento formaDePagamentoPedido;
 	
 	@Column
 	private double valorTotalPedido;
@@ -40,19 +42,19 @@ public class PedidoVenda implements Serializable {
 	@Column
 	private boolean statusPedido = false;
 
-	public Cliente getNomeClientePedido() {
-		return nomeClientePedido;
+	public Cliente getClientePedido() {
+		return clientePedido;
 	}
 
-	public void setNomeClientePedido(Cliente nomeClientePedido) {
-		this.nomeClientePedido = nomeClientePedido;
+	public void setClientePedido(Cliente clientePedido) {
+		this.clientePedido = clientePedido;
 	}
 
-	public Produto getProdutosPedido() {
+	public List<Produto> getProdutosPedido() {
 		return produtosPedido;
 	}
 
-	public void setProdutosPedido(Produto produtosPedido) {
+	public void setProdutosPedido(List<Produto> produtosPedido) {
 		this.produtosPedido = produtosPedido;
 	}
 
@@ -72,11 +74,11 @@ public class PedidoVenda implements Serializable {
 		this.quantidadeDeProdutosPedido = quantidadeDeProdutosPedido;
 	}
 
-	public FormaDePagamento_Recebimento getFormaDePagamentoPedido() {
+	public FormaDePagamento getFormaDePagamentoPedido() {
 		return formaDePagamentoPedido;
 	}
 
-	public void setFormaDePagamentoPedido(FormaDePagamento_Recebimento formaDePagamentoPedido) {
+	public void setFormaDePagamentoPedido(FormaDePagamento formaDePagamentoPedido) {
 		this.formaDePagamentoPedido = formaDePagamentoPedido;
 	}
 
@@ -96,11 +98,11 @@ public class PedidoVenda implements Serializable {
 		this.statusPedido = statusPedido;
 	}
 
-	public PedidoVenda(Cliente nomeClientePedido, Produto produtosPedido, LocalDate dataPedido,
-			double quantidadeDeProdutosPedido, FormaDePagamento_Recebimento formaDePagamentoPedido,
+	public PedidoVenda(Cliente clientePedido, List<Produto> produtosPedido, LocalDate dataPedido,
+			double quantidadeDeProdutosPedido, FormaDePagamento formaDePagamentoPedido,
 			double valorTotalPedido, boolean statusPedido) {
 		super();
-		this.nomeClientePedido = nomeClientePedido;
+		this.clientePedido = clientePedido;
 		this.produtosPedido = produtosPedido;
 		DataPedido = dataPedido;
 		this.quantidadeDeProdutosPedido = quantidadeDeProdutosPedido;
@@ -108,15 +110,15 @@ public class PedidoVenda implements Serializable {
 		this.valorTotalPedido = valorTotalPedido;
 		this.statusPedido = statusPedido;
 	}
-	
+
 	public PedidoVenda() {
 		
 	}
 
 	@Override
 	public String toString() {
-		return "PedidoVenda [nomeClientePedido=" + nomeClientePedido + ", produtosPedido=" + produtosPedido
-				+ ", DataPedido=" + DataPedido + ", quantidadeDeProdutosPedido=" + quantidadeDeProdutosPedido
+		return "PedidoVenda [clientePedido=" + clientePedido + ", produtosPedido=" + produtosPedido + ", DataPedido="
+				+ DataPedido + ", quantidadeDeProdutosPedido=" + quantidadeDeProdutosPedido
 				+ ", formaDePagamentoPedido=" + formaDePagamentoPedido + ", valorTotalPedido=" + valorTotalPedido
 				+ ", statusPedido=" + statusPedido + "]";
 	}
@@ -125,16 +127,8 @@ public class PedidoVenda implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((DataPedido == null) ? 0 : DataPedido.hashCode());
-		result = prime * result + ((formaDePagamentoPedido == null) ? 0 : formaDePagamentoPedido.hashCode());
-		result = prime * result + ((nomeClientePedido == null) ? 0 : nomeClientePedido.hashCode());
-		result = prime * result + ((produtosPedido == null) ? 0 : produtosPedido.hashCode());
-		long temp;
-		temp = Double.doubleToLongBits(quantidadeDeProdutosPedido);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		result = prime * result + (statusPedido ? 1231 : 1237);
-		temp = Double.doubleToLongBits(valorTotalPedido);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + ((clientePedido == null) ? 0 : clientePedido.hashCode());
+		result = prime * result + idPedidoVenda;
 		return result;
 	}
 
@@ -147,52 +141,17 @@ public class PedidoVenda implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		PedidoVenda other = (PedidoVenda) obj;
-		if (DataPedido == null) {
-			if (other.DataPedido != null)
+		if (clientePedido == null) {
+			if (other.clientePedido != null)
 				return false;
-		} else if (!DataPedido.equals(other.DataPedido))
+		} else if (!clientePedido.equals(other.clientePedido))
 			return false;
-		if (formaDePagamentoPedido == null) {
-			if (other.formaDePagamentoPedido != null)
-				return false;
-		} else if (!formaDePagamentoPedido.equals(other.formaDePagamentoPedido))
-			return false;
-		if (nomeClientePedido == null) {
-			if (other.nomeClientePedido != null)
-				return false;
-		} else if (!nomeClientePedido.equals(other.nomeClientePedido))
-			return false;
-		if (produtosPedido == null) {
-			if (other.produtosPedido != null)
-				return false;
-		} else if (!produtosPedido.equals(other.produtosPedido))
-			return false;
-		if (Double.doubleToLongBits(quantidadeDeProdutosPedido) != Double
-				.doubleToLongBits(other.quantidadeDeProdutosPedido))
-			return false;
-		if (statusPedido != other.statusPedido)
-			return false;
-		if (Double.doubleToLongBits(valorTotalPedido) != Double.doubleToLongBits(other.valorTotalPedido))
+		if (idPedidoVenda != other.idPedidoVenda)
 			return false;
 		return true;
 	}
-
-	private VendaDeMercadoria vendaDeMercadoria;
 	
-	public void finalizarPedido(PedidoVenda pedidoVenda) {
-		if(verificarDisponibilidadeProduto(pedidoVenda.getProdutosPedido()) == true) {
-			vendaDeMercadoria.finalizarVenda(pedidoVenda);
-			pedidoVenda.statusPedido = true;
-		}
-		System.out.println("Produto indisponivel!");
-	}
 	
-	public boolean verificarDisponibilidadeProduto(Produto produto) {
-		if(produto.getQuantProduto()>0) {
-			return true;
-		}
-		return false;
-	}
-
+	
 	
 }
