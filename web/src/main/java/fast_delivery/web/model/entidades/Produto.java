@@ -13,6 +13,10 @@ import javax.persistence.OneToMany;
 public class Produto implements Serializable {
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int idProduto;
+	
+	@Id
 	private String codProduto;
 
 	@Column
