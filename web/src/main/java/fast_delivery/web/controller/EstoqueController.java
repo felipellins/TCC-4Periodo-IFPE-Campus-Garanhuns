@@ -8,30 +8,34 @@ import fast_delivery.web.model.entidades.Produto;
 public class EstoqueController {
 
 	ProdutoModel pm = new ProdutoModel();
-	
+
 	public void removerProduto(List<Produto> produtos) {
 		for (Produto produto : produtos) {
-			Produto produtoAux = pm.recuperar(produto.getIdProduto());
-			produtoAux.setQuantProduto(produtoAux.getQuantProduto()-produto.getQuantProduto());
-			pm.alterar(produtoAux);
+			Produto produtoAux = pm.recuperarPorCodigo(produto.getCodProduto());
+			produtoAux.setQuantProduto(produtoAux.getQuantProduto() - produto.getQuantProduto());
+			if (verificarDisponibilidadeProduto(produtoAux) == true) {
+				pm.alterar(produtoAux);
+			} else {
+				produtoAux.setQuantProduto(produtoAux.getQuantProduto() + produto.getQuantProduto());
+				System.out.println("Quantidade INDISPONIVEL");
+			}
 		}
 	}
 
 	public void adicionarProduto(List<Produto> produtos) {
 		for (Produto produto : produtos) {
-			Produto produtoAux = pm.recuperar(produto.getIdProduto());
-			produtoAux.setQuantProduto(produtoAux.getQuantProduto()+produto.getQuantProduto());
+			Produto produtoAux = pm.recuperarPorCodigo(produto.getCodProduto());
+			produtoAux.setQuantProduto(produtoAux.getQuantProduto() + produto.getQuantProduto());
 			pm.alterar(produtoAux);
 		}
 	}
 
-	public boolean verificarDisponibilidadeProduto(List<Produto> produtos) {
-		for (Produto produto : produtos) {
-			Produto produtoAux = pm.recuperar(produto.getIdProduto());
-			if(produtoAux.getQuantProduto()>0) {
-				return true;
-			}
+	public boolean verificarDisponibilidadeProduto(Produto produto) {
+		
+		if (produto.getQuantProduto() >= 0) {
+			return true;
 		}
+
 		return false;
 	}
 

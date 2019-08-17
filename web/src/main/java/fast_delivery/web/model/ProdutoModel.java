@@ -25,6 +25,10 @@ public class ProdutoModel {
 
 		return prod.recuperar(p);
 	}
+	
+	public Produto recuperarPorCodigo(String str) {
+		return prod.recuperarPorCodigo(str);
+	}
 
 	public void deletar(Produto p) {
 		prod.deletar(p);

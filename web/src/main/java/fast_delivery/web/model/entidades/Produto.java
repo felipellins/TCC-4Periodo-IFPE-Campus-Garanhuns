@@ -11,12 +11,8 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class Produto implements Serializable {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int idProduto;
 	
-	@Column
+	@Id
 	private String codProduto;
 
 	@Column
@@ -48,10 +44,6 @@ public class Produto implements Serializable {
 		
 	}
 	
-	public int getIdProduto() {
-		return idProduto;
-	}
-
 	public String getCodProduto() {
 		return codProduto;
 	}
@@ -112,7 +104,6 @@ public class Produto implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((codProduto == null) ? 0 : codProduto.hashCode());
-		result = prime * result + idProduto;
 		return result;
 	}
 
@@ -129,8 +120,6 @@ public class Produto implements Serializable {
 			if (other.codProduto != null)
 				return false;
 		} else if (!codProduto.equals(other.codProduto))
-			return false;
-		if (idProduto != other.idProduto)
 			return false;
 		return true;
 	}
