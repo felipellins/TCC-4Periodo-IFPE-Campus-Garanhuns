@@ -10,7 +10,7 @@ import javax.faces.bean.SessionScoped;
 import fast_delivery.web.model.ProdutoModel;
 import fast_delivery.web.model.entidades.Produto;
 
-@ManagedBean(name = "produtocontroller")
+@ManagedBean(name = "p")
 @SessionScoped
 public class ProdutoController {
 

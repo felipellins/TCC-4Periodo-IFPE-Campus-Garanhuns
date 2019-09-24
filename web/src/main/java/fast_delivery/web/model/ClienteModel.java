@@ -28,6 +28,10 @@ public class ClienteModel {
 		cli.deletar(c);
 
 	}
+	
+	public Cliente recuperarPorCodigo(String codCliente) {
+		return cli.recuperarPorCodigo(codCliente);
+	}
 
 	public List<Cliente> listarTodos() {
 

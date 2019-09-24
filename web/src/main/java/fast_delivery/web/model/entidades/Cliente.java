@@ -10,7 +10,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 
 @SuppressWarnings("serial")
 @Entity
@@ -18,58 +17,84 @@ public class Cliente implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer id;
-	private String cnpjCliente;
-	private String razaoSocial;
-	private String telefone;
+	private int idCliente;
+	
+	private String codCliente;
+	private String nomeCliente;
+	private String cpfLoginUsuario;
+	private String telefoneCliente;
+	private String emailCliente;
+	private String senhaUsuario;
 	private Endereco endereco;
 
 	public Cliente() {
 		this.endereco = new Endereco();
 	}
 
-	public Cliente(String cnpjCliente, String razaoSocial, String telefone, Endereco endereco) {
-		this.cnpjCliente = cnpjCliente;
-		this.razaoSocial = razaoSocial;
-		this.telefone = telefone;
+	public Cliente(String codCliente, String nomeCliente, String cpfLoginUsuario, String telefoneCliente,
+			String emailCliente, String senhaUsuario, Endereco endereco) {
+
+		this.codCliente = codCliente;
+		this.nomeCliente = nomeCliente;
+		this.cpfLoginUsuario = cpfLoginUsuario;
+		this.telefoneCliente = telefoneCliente;
+		this.emailCliente = emailCliente;
+		this.senhaUsuario = senhaUsuario;
 		this.endereco = endereco;
 	}
-	
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	public Integer getId() {
-		return id;
+	public String getCodCliente() {
+		return codCliente;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
-	
-	@Column(name = "cnpj", length = 30, nullable = false)
-	public String getCnpjCliente() {
-		return cnpjCliente;
-	}
-
-	public void setCnpjCliente(String cnpjCliente) {
-		this.cnpjCliente = cnpjCliente;
+	public void setCodCliente(String codCliente) {
+		this.codCliente = codCliente;
 	}
 
 	@Column(name = "nome", length = 50, nullable = false)
-	public String getRazaoSocial() {
-		return razaoSocial;
+	public String getNomeCliente() {
+		return nomeCliente;
 	}
 
-	public void setRazaoSocial(String razaoSocial) {
-		this.razaoSocial = razaoSocial;
+	public void setNomeCliente(String nomeCliente) {
+		this.nomeCliente = nomeCliente;
 	}
 
-	@Column
-	public String getTelefone() {
-		return telefone;
+	@Column(name = "cpf", length = 14, nullable = false)
+	public String getCpfLoginUsuario() {
+		return cpfLoginUsuario;
 	}
 
-	public void setTelefone(String telefone) {
-		this.telefone = telefone;
+	public void setCpfLoginUsuario(String cpfLoginUsuario) {
+		this.cpfLoginUsuario = cpfLoginUsuario;
+	}
+
+	@Column(length = 20)
+	public String getTelefoneCliente() {
+		return telefoneCliente;
+	}
+
+	public void setTelefoneCliente(String telefoneCliente) {
+		this.telefoneCliente = telefoneCliente;
+	}
+
+	@Column(length = 50)
+	public String getEmailCliente() {
+		return emailCliente;
+	}
+
+	public void setEmailCliente(String emailCliente) {
+		this.emailCliente = emailCliente;
+	}
+
+	@Column(name = "senha", length = 10, nullable = false)
+	public String getSenhaUsuario() {
+		return senhaUsuario;
+	}
+
+	public void setSenhaUsuario(String senhaUsuario) {
+		this.senhaUsuario = senhaUsuario;
 	}
 
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
@@ -85,8 +110,9 @@ public class Cliente implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((cnpjCliente == null) ? 0 : cnpjCliente.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((codCliente == null) ? 0 : codCliente.hashCode());
+		result = prime * result + ((cpfLoginUsuario == null) ? 0 : cpfLoginUsuario.hashCode());
+		result = prime * result + ((senhaUsuario == null) ? 0 : senhaUsuario.hashCode());
 		return result;
 	}
 
@@ -99,26 +125,29 @@ public class Cliente implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Cliente other = (Cliente) obj;
-		if (cnpjCliente == null) {
-			if (other.cnpjCliente != null)
+		if (codCliente == null) {
+			if (other.codCliente != null)
 				return false;
-		} else if (!cnpjCliente.equals(other.cnpjCliente))
+		} else if (!codCliente.equals(other.codCliente))
 			return false;
-		if (id == null) {
-			if (other.id != null)
+		if (cpfLoginUsuario == null) {
+			if (other.cpfLoginUsuario != null)
 				return false;
-		} else if (!id.equals(other.id))
+		} else if (!cpfLoginUsuario.equals(other.cpfLoginUsuario))
+			return false;
+		if (senhaUsuario == null) {
+			if (other.senhaUsuario != null)
+				return false;
+		} else if (!senhaUsuario.equals(other.senhaUsuario))
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Cliente [cnpjCliente=" + cnpjCliente + ", razaoSocial=" + razaoSocial + ", telefone=" + telefone
-				+ ", endereco=" + endereco + "]";
+		return "Cliente [codCliente=" + codCliente + ", nomeCliente=" + nomeCliente + ", cpfLoginUsuario="
+				+ cpfLoginUsuario + ", telefoneCliente=" + telefoneCliente + ", emailCliente=" + emailCliente
+				+ ", senhaUsuario=" + senhaUsuario + ", endereco=" + endereco + "]";
 	}
 
-	
-	
-	
 }

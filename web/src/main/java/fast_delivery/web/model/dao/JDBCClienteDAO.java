@@ -51,6 +51,21 @@ import fast_delivery.web.model.entidades.Cliente;
 			}
 			return cliente;
 		}
+		
+		@Override
+		public Cliente recuperarPorCodigo(String codCliente) {
+			Cliente cliente = null;
+
+			Session session = HibernateUtil.getSession();
+			try {
+				cliente = session.find(Cliente.class, codCliente);
+				session.close();
+			} catch (Exception e) {
+				System.out.println("Erro ao recuperar " + e.toString());
+			}
+			return cliente;
+
+		}
 
 		public void deletar(Cliente c) {
 

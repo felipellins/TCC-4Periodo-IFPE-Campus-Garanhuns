@@ -17,13 +17,13 @@
                 <p:fieldset legend="Cadastro">
                     <p:panelGrid columns="2">
                         <p:outputLabel value="Nome"/>
-                        <p:inputText value="#{produtocontroller.p.nomeProduto}" />
+                        <p:inputText value="#{p.nomeProduto}" />
                         <p:outputLabel value="Valor Produto"/>
-                        <p:inputText  value="#{produtocontroller.p.valorProduto}" />
+                        <p:inputText  value="#{p.precoVendaProduto}" />
                     </p:panelGrid>
                 </p:fieldset>
 
-                <p:commandButton update= "growl @form" value="Cadastrar" action="#{produtocontroller.inserirProdutoAction()}"/>
+                <p:commandButton update= "growl @form" value="Cadastrar" action="#{p.inserirProdutoAction()}"/>
                 <p:commandButton oncomplete="PF('confDialCancelar').show()" value="Cancelar"/>
                 <p:confirmDialog header="Deseja cancelar?" widgetVar="confDialCancelar"
                                  message="Caso escolha cancelar, os dados que não foram salvos, serão perdidos" >
